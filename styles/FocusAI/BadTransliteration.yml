@@ -1,0 +1,25 @@
+# T6: תעתיק לקוי של מילים אנגליות
+# See: design/unified-hebrew-principles.md § T6
+#
+# Catches the "טרמינים" class of bad transliterations: English words
+# lazily Hebraized when a clean Hebrew equivalent exists. These are NOT
+# accepted loanwords like "בלוג" or "סלט".
+#
+# Criterion for inclusion: the word has a clean Hebrew alternative AND
+# the transliterated form sounds wrong to a native speaker. Hand-curated.
+#
+# Go regex has no lookbehind; rely on nonword: false (word boundaries).
+
+extends: substitution
+message: "כתבו '%s' במקום '%s' (תעתיק לקוי)"
+level: error
+ignorecase: false
+nonword: false
+action:
+  name: replace
+swap:
+  'טרמינים': 'מונחים'
+  'טרמין': 'מונח'
+  'טרמינולוגיה': 'מונחים'
+  'טרמינולוגית': 'אחידות מונחים'
+  'טרמינולוגי': 'של מונחים'

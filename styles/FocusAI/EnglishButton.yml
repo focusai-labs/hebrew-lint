@@ -1,0 +1,16 @@
+# L5: כפתורים אנגליים
+# See: design/unified-hebrew-principles.md § L5
+#
+# Targets <button> or href with pure-English labels in HTML files that
+# otherwise contain Hebrew. Product-name buttons (Sign in with Google) are
+# allowed as exceptions in accept.txt.
+
+extends: existence
+message: "כפתור באנגלית. תרגמו לעברית או עטפו בהקשר עברי"
+level: warning
+ignorecase: false
+scope: raw
+nonword: true
+tokens:
+  - '<button[^>]*>\s*[A-Za-z][^<>]*</button>'
+  - '<a[^>]*class="[^"]*btn[^"]*"[^>]*>\s*[A-Za-z][^<>]*</a>'

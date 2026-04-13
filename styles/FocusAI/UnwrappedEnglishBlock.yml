@@ -1,0 +1,15 @@
+# L2: בלוקים ארוכים באנגלית בלי wrapping
+# See: design/unified-hebrew-principles.md § L2
+# Source: W3C Inline Bidi Markup
+#
+# This rule targets HTML files only. It catches long English paragraphs
+# (8+ words) that aren't inside a dir="ltr" wrapper.
+
+extends: existence
+message: "בלוק ארוך באנגלית בלי <div dir=\"ltr\">. עטפו אותו"
+level: warning
+ignorecase: false
+scope: raw
+nonword: true
+tokens:
+  - '<p(?![^>]*dir="ltr")[^>]*>(?:[A-Za-z]+\s+){8,}'

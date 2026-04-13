@@ -1,0 +1,19 @@
+# S5: רשימות במבנה אחיד
+# See: design/unified-hebrew-principles.md § S5
+# Source: Microsoft Writing Style Guide: Bulleted lists
+#
+# NOTE: True list parallelism requires POS tagging which Vale's NLP engine
+# does not support for Hebrew. This rule catches a heuristic: list items
+# where the first word starts with either a verb imperative OR a noun
+# without a consistent pattern. Very high false positive rate: SUGGESTION only.
+
+extends: existence
+message: "רשימה עם פריטים לא אחידים. תוודאו שכולם מתחילים באותו חלק דיבור"
+level: suggestion
+ignorecase: false
+scope: list
+nonword: true
+# Intentionally minimal: full parallelism requires NLP.
+# This rule is a placeholder; human review is the real enforcement.
+tokens:
+  - 'PLACEHOLDER_RULE_NEVER_MATCHES_BY_DESIGN'

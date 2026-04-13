@@ -1,0 +1,14 @@
+# P2: אסור em-dash / en-dash בטקסט עברי
+# See: design/unified-hebrew-principles.md section P2
+#
+# Catches U+2014 (em-dash) or U+2013 (en-dash). Code blocks are excluded
+# globally via TokenIgnores in .vale.ini.
+
+extends: existence
+message: "אסור em-dash או en-dash בטקסט עברי. השתמשו בנקודה, פסיק, או נקודתיים"
+level: error
+ignorecase: false
+nonword: true
+tokens:
+  - '—'
+  - '–'

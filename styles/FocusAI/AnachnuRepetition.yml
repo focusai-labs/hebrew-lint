@@ -1,0 +1,13 @@
+# S4: לא יותר משתי "אנחנו" ברצף
+# See: design/unified-hebrew-principles.md § S4
+#
+# Catches 3+ consecutive sentences starting with "אנחנו" inside a single
+# paragraph. Customer-first writing puts the reader, not the company, at
+# the start of sentences.
+
+extends: occurrence
+message: "יותר מדי משפטים שמתחילים ב-'אנחנו'. החליפו חלק ב-'Focus AI', 'הצוות', או במבנה אחר"
+level: warning
+scope: paragraph
+max: 2
+token: '(?:^|[.!?]\s+)אנחנו\s'

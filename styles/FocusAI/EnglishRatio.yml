@@ -1,0 +1,18 @@
+# S1: אחוז אנגלית במשפט
+# See: design/unified-hebrew-principles.md § S1
+# Source: Soesman & Walters (2021): code-switching research
+#
+# Fires when a paragraph contains long runs of English tokens (8+ English
+# words back-to-back without a Hebrew interruption). This is a proxy for
+# "more than 30% English" since Vale's metric engine cannot count word
+# ratios directly. For a precise ratio check, use scripts/english-ratio.py
+# outside of Vale.
+
+extends: existence
+message: "יותר מדי אנגלית בפסקה. משפט עברי לא צריך להכיל יותר מ-30% מילים אנגליות"
+level: warning
+ignorecase: false
+scope: paragraph
+nonword: true
+tokens:
+  - '(?:[A-Za-z]+\s+){8,}'

@@ -1,0 +1,24 @@
+# Vale config — template for installation into target projects
+# install.sh copies this file to the target project as .vale.ini
+# ראו: https://vale.sh/docs/topics/config
+
+StylesPath = .vale/styles
+MinAlertLevel = suggestion
+
+# פורמטים נתמכים
+[*.{md,markdown}]
+BasedOnStyles = FocusAI
+
+[*.{html,htm}]
+BasedOnStyles = FocusAI
+
+[*.{txt,rst,adoc}]
+BasedOnStyles = FocusAI
+
+# קוד: בודקים רק comments
+[*.{py,js,ts,tsx,jsx,sh,go,rb}]
+BasedOnStyles = FocusAI
+CommentDelimiters = //,/*,*/,#
+
+# יוצאים מן הכלל ל-URLs ב-code blocks
+TokenIgnores = (?s) *(```.*?```), (?s)`[^`]+`

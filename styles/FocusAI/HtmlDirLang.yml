@@ -1,0 +1,15 @@
+# L1: `<html lang="he" dir="rtl">` חובה
+# See: design/unified-hebrew-principles.md § L1
+# Source: W3C: Using the dir attribute
+#
+# Fires on HTML files that contain Hebrew but don't declare dir="rtl"
+# and lang="he" on the <html> element.
+
+extends: existence
+message: "קובץ HTML עברי בלי <html lang=\"he\" dir=\"rtl\">"
+level: error
+ignorecase: false
+scope: raw
+nonword: true
+tokens:
+  - '<html(?![^>]*dir="rtl")[^>]*>[\s\S]*[\x{0590}-\x{05FF}]'

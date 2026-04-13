@@ -1,0 +1,16 @@
+# P1: מקף בין אות עברית למילה אנגלית
+# See: design/unified-hebrew-principles.md § P1
+# Source: Academy of the Hebrew Language: rules of maqaf
+# https://hebrew-academy.org.il/category/%D7%9E%D7%A7%D7%A3/
+#
+# Catches cases like "הAPI", "בn8n", "לWorkflow" where a Hebrew prefix letter
+# (ה, ב, ל, מ, כ, ו, ש) is directly concatenated to a Latin word without
+# the required hyphen.
+
+extends: existence
+message: "חסר מקף בין אות עברית למילה אנגלית: '%s'. תכתבו 'ה-API' לא 'הAPI'"
+level: error
+ignorecase: false
+nonword: true
+tokens:
+  - '[הבלמכושי][A-Za-z][A-Za-z]+'

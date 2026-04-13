@@ -1,0 +1,15 @@
+# T5: ציטוטים ASCII בלבד
+# See: design/unified-hebrew-principles.md § T5
+# Source: Unicode UAX #9
+#
+# Smart/curly quotes inside Hebrew text create unexpected isolation runs.
+# Use straight quotes (") and straight apostrophes (').
+
+extends: existence
+message: "'%s': smart quote בתוך טקסט עברי. השתמשו בציטוט ישר"
+level: suggestion
+ignorecase: false
+nonword: true
+tokens:
+  - '[\x{0590}-\x{05FF}][^\n]{0,30}[\x{201C}\x{201D}\x{2018}\x{2019}]'
+  - '[\x{201C}\x{201D}\x{2018}\x{2019}][^\n]{0,30}[\x{0590}-\x{05FF}]'

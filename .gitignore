@@ -1,0 +1,4 @@
+.DS_Store
+.vale/
+node_modules/
+*.log

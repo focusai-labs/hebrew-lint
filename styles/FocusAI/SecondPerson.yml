@@ -1,0 +1,20 @@
+# V5: גוף שני ישיר
+# See: design/unified-hebrew-principles.md § V5
+# Source: Google Developer Docs Style Guide: Person
+#
+# Flags third-person references when addressing the reader.
+# NOTE: This rule has a higher false-positive rate than most; it's warning-level,
+# and users can override via accept.txt per-project.
+
+extends: existence
+message: "'%s': גוף שלישי. עדיף לדבר ישירות אל הקורא ב-'אתם'"
+level: warning
+ignorecase: false
+scope: paragraph
+tokens:
+  - 'על המשתמש ל'
+  - 'המשתמש יכול'
+  - 'המשתמש צריך'
+  - 'על הלקוח ל'
+  - 'הלקוח יכול'
+  - 'הלקוח צריך'

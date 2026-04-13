@@ -1,0 +1,15 @@
+# P4: סימני פיסוק צמודים לאנגלית
+# See: design/unified-hebrew-principles.md § P4
+# Source: Unicode UAX #9: Bidirectional Algorithm
+#
+# Catches a Latin word followed by a space and then punctuation. Under UBA,
+# this makes the punctuation appear in the wrong place. Solution: remove the
+# space (attach punctuation to the Latin word).
+
+extends: existence
+message: "סימן פיסוק אחרי מילה אנגלית צריך להיות צמוד, לא עם רווח"
+level: suggestion
+ignorecase: false
+nonword: true
+tokens:
+  - '[A-Za-z]+ [\.,:;!?]'

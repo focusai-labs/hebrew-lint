@@ -1,0 +1,21 @@
+# V4: כותרות מנקודת מבט הקורא
+# See: design/unified-hebrew-principles.md § V4
+# Source: Microsoft Writing Style Guide: Customer-focused
+#
+# Only fires on heading scope. Possessive company-centric headings are
+# flagged in favor of reader-centric alternatives.
+
+extends: substitution
+message: "כותרת מנקודת מבט הקורא: '%s' במקום '%s'"
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  'השירותים שלנו': 'מה אתם מקבלים'
+  'המוצרים שלנו': 'מה זמין לכם'
+  'הצוות שלנו': 'מי עומד מאחוריכם'
+  'המחיר שלנו': 'ההשקעה'
+  'הגישה שלנו': 'איך אנחנו עובדים יחד'
+  'הלקוחות שלנו': 'חברות שעובדות איתנו'
+  'החזון שלנו': 'לאן אנחנו הולכים יחד'

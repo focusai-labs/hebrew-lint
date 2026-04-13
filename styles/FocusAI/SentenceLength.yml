@@ -1,0 +1,15 @@
+# S3: משפטים קצרים
+# See: design/unified-hebrew-principles.md § S3
+# Source: Google Developer Docs Style Guide: Write for a global audience
+#
+# Sentences over 30 words should be split. We approximate sentence boundaries
+# with periods, question marks, or exclamation points.
+
+extends: existence
+message: "משפט ארוך מ-30 מילים. תפצלו לשני משפטים"
+level: suggestion
+ignorecase: false
+scope: paragraph
+nonword: true
+tokens:
+  - '(?:\S+\s+){30,}[.!?]'

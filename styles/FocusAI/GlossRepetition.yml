@@ -1,0 +1,11 @@
+# T4: Gloss ראשון בלבד
+# See: design/unified-hebrew-principles.md § T4
+#
+# This rule fires when the same "Term (Hebrew gloss)" pattern appears more
+# than once in a document. Vale's `occurrence` extends counts matches.
+
+extends: occurrence
+message: "glossary באותו מסמך יותר מפעם אחת. הגדירו מונח פעם אחת בלבד"
+level: warning
+max: 1
+token: '[A-Za-z]{2,}\s*\(([\x{0590}-\x{05FF}\s]+)\)'

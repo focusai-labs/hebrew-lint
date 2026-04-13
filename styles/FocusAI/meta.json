@@ -1,0 +1,15 @@
+{
+  "feed": "https://github.com/focusai-labs/hebrew-lint/releases.atom",
+  "vale_version": ">=2.30.0",
+  "author": "Focus AI Labs",
+  "description": "Vale style for enforcing Focus AI Hebrew writing rules. 25 rules across 5 namespaces (Voice, Terminology, Punctuation, Structure, Localization), based on Academy of the Hebrew Language rulings, Microsoft Style Guide, W3C i18n standards, and linguistic research on Hebrew-English code-switching.",
+  "coverage": 0.72,
+  "homepage": "https://github.com/focusai-labs/hebrew-lint",
+  "license": "MIT",
+  "sources": [
+    "https://hebrew-academy.org.il/topic/hahlatot/grammardecisions/borrowed-words/",
+    "https://learn.microsoft.com/en-us/style-guide/",
+    "https://www.w3.org/International/articles/inline-bidi-markup/",
+    "https://journals.sagepub.com/doi/abs/10.1177/13670069211000855"
+  ]
+}

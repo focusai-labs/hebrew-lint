@@ -1,0 +1,21 @@
+# V3: CTAs אסורים
+# See: design/unified-hebrew-principles.md § V3
+#
+# Fires on singular/old-style CTAs. Suggests an approved plural replacement.
+
+extends: substitution
+message: "השתמשו ב-'%s' במקום '%s' (CTA לא מאושר)"
+level: error
+ignorecase: false
+action:
+  name: replace
+swap:
+  'גלה עוד': 'גלו עוד'
+  'גלה את השירותים שלנו': 'מה אנחנו מציעים'
+  'עיין במחיר': 'לפרטי השקעה'
+  'הצטרף עכשיו': 'הצטרפו עכשיו'
+  'התחבר': 'התחברו'
+  'הירשם עכשיו': 'הירשמו עכשיו'
+  'שלח הודעה': 'שלחו הודעה'
+  'קרא עוד': 'קראו עוד'
+  'צור קשר': 'דברו איתנו'

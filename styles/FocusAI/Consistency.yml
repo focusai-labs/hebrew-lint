@@ -1,0 +1,15 @@
+# T2: עקביות מונחים
+# See: design/unified-hebrew-principles.md section T2
+# Source: GitLab Documentation Style Guide word list
+#
+# Within a single document, you must pick ONE form of each technical term.
+# Vale's `consistency` extends enforces that only one of two alternatives
+# appears. Vale reports the matched variant; the message takes a single %s.
+
+extends: consistency
+message: "עקביות מונחים: המסמך מערבב גרסאות של '%s'. בחרו אחת"
+level: error
+ignorecase: false
+either:
+  workflow: Workflow
+  webhook: Webhook

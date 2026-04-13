@@ -1,0 +1,16 @@
+# T3: הטיה: אסור חצי-חצי
+# See: design/unified-hebrew-principles.md § T3
+# Source: Academy of the Hebrew Language decision 5.1
+#
+# Catches forms like "workflowים", "APIים" where an English word is inflected
+# with a Hebrew suffix without a hyphen. Must be either "workflow-ים" (with
+# hyphen) or a full transliteration like "וורקפלואואים".
+
+extends: existence
+message: "'%s': הטיה חצי-חצי. כתבו 'workflow-ים' עם מקף, או 'וורקפלואואים' בתעתיק מלא"
+level: error
+ignorecase: false
+nonword: true
+tokens:
+  - '[A-Za-z]{3,}ים'
+  - '[A-Za-z]{3,}ות'

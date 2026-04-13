@@ -1,0 +1,41 @@
+# V1: ציווי ברבים בלבד
+# See: design/unified-hebrew-principles.md § V1
+# Source: Microsoft Hebrew Style Guide (second-person plural)
+#
+# Go regex (RE2) does not support lookbehind. We rely on `nonword: true`
+# to match literal tokens at non-word boundaries. Hebrew feminine singular
+# imperatives are NOT listed: we address a mixed audience in plural.
+
+extends: substitution
+message: "השתמשו ב-'%s' (רבים) במקום '%s' (ציווי יחיד)"
+level: error
+ignorecase: false
+nonword: false
+action:
+  name: replace
+swap:
+  'לחץ': 'לחצו'
+  'בחר': 'בחרו'
+  'הרץ': 'הריצו'
+  'שלח': 'שלחו'
+  'שמור': 'שמרו'
+  'הכנס': 'הכניסו'
+  'פתח': 'פתחו'
+  'סגור': 'סגרו'
+  'התחבר': 'התחברו'
+  'הצטרף': 'הצטרפו'
+  'גלה': 'גלו'
+  'צפה': 'צפו'
+  'התקן': 'התקינו'
+  'הורד': 'הורידו'
+  'העלה': 'העלו'
+  'ערוך': 'ערכו'
+  'קרא': 'קראו'
+  'הפעל': 'הפעילו'
+  'כבה': 'כבו'
+  'הירשם': 'הירשמו'
+  'עיין': 'עיינו'
+  'בקר': 'בקרו'
+  'בדוק': 'בדקו'
+  'נסה': 'נסו'
+  'הגש': 'הגישו'

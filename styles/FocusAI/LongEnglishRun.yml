@@ -1,0 +1,15 @@
+# S2: מקסימום 3 מילים אנגליות רצופות
+# See: design/unified-hebrew-principles.md § S2
+# Source: Unicode UAX #9: long LTR runs inside RTL cause rendering issues
+#
+# Catches 4+ consecutive English words inside Hebrew text. If you need a long
+# English phrase, wrap it in <div dir="ltr" lang="en">.
+
+extends: existence
+message: "רצף של 4+ מילים אנגליות. עטפו ב-<div dir=\"ltr\"> או תרגמו חלק"
+level: warning
+ignorecase: false
+scope: paragraph
+nonword: true
+tokens:
+  - '[\x{0590}-\x{05FF}][^\n]*?\b[A-Za-z]+(?:\s+[A-Za-z]+){3,}'

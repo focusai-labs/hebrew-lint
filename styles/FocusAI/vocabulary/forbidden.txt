@@ -1,0 +1,17 @@
+# Forbidden Hebrew words — archaic formal language
+# One word per line. Used by Voice/NoFormalPronouns.yml
+
+הננו
+הננה
+חברתנו
+לקוחותינו
+ספקינו
+מוצרינו
+אנו מציעים
+אנו שמחים
+אנו מתכבדים
+בזאת
+בזה
+הרינו
+בכבוד רב
+בכבוד מרובה

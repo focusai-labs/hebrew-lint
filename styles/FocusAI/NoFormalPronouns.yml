@@ -1,0 +1,22 @@
+# V2: אין פורמליות ארכאית
+# See: design/unified-hebrew-principles.md § V2
+#
+# Fires on archaic formal Hebrew that sounds like 1990s B2B.
+
+extends: existence
+message: "'%s': פורמלי מדי. השתמשו ב'אנחנו', 'Focus AI', 'הלקוחות שלנו'"
+level: error
+ignorecase: false
+tokens:
+  - 'הננו'
+  - 'הננה'
+  - 'חברתנו'
+  - 'לקוחותינו'
+  - 'ספקינו'
+  - 'מוצרינו'
+  - 'אנו מציעים'
+  - 'אנו שמחים'
+  - 'אנו מתכבדים'
+  - 'הרינו'
+  - 'בכבוד רב'
+  - 'בכבוד מרובה'

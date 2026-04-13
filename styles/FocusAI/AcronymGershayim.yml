@@ -1,0 +1,14 @@
+# P5: גרשיים בראשי תיבות מלועזית
+# See: design/unified-hebrew-principles.md § P5
+# Source: Academy of the Hebrew Language: gershayim rules
+#
+# Catches dot-separated Latin letters like "A.P.I" that should either be
+# transliterated ("אונסק"ו") or kept as plain English ("API").
+
+extends: existence
+message: "ראשי תיבות בתעתיק חלקי. כתבו 'API' או תעתיק מלא עם גרשיים כמו 'אונסק\"ו'"
+level: suggestion
+ignorecase: false
+nonword: true
+tokens:
+  - '[A-Za-z]\.[A-Za-z]\.[A-Za-z]'

@@ -1,0 +1,16 @@
+# L3: URLs raw בתוך משפט עברי
+# See: design/unified-hebrew-principles.md § L3
+# Source: Unicode UAX #9
+#
+# Raw https:// URLs inside Hebrew paragraphs cause bidi confusion. Use
+# Markdown link syntax [text](url) or wrap in <span dir="ltr">.
+
+extends: existence
+message: "URL raw בתוך טקסט עברי. השתמשו ב-Markdown link [טקסט](url)"
+level: suggestion
+ignorecase: false
+scope: paragraph
+nonword: true
+tokens:
+  - '[\x{0590}-\x{05FF}][^\n]{0,50}https?://'
+  - 'https?://[^\s\)\]]+[^\n]{0,50}[\x{0590}-\x{05FF}]'

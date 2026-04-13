@@ -1,0 +1,21 @@
+# P3: אסור italics בעברית
+# See: design/unified-hebrew-principles.md § P3
+# Source: W3C Hebrew Layout Requirements (HLReq)
+# https://w3c.github.io/hlreq/
+#
+# Hebrew italics are unreadable in most fonts and are forbidden per W3C HLReq.
+# Use **bold** or letter-spacing for emphasis.
+#
+# The regex catches *word* or _word_ where the word contains Hebrew characters.
+# Code blocks and inline code are excluded.
+
+extends: existence
+message: "italics אסורים בעברית. השתמשו ב-**bold** במקום"
+level: warning
+ignorecase: false
+nonword: true
+tokens:
+  - '\*[^*\n]*[\x{0590}-\x{05FF}][^*\n]*\*'
+  - '_[^_\n]*[\x{0590}-\x{05FF}][^_\n]*_'
+  - '<i[^>]*>[^<]*[\x{0590}-\x{05FF}][^<]*</i>'
+  - '<em[^>]*>[^<]*[\x{0590}-\x{05FF}][^<]*</em>'
