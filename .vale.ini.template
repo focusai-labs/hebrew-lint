@@ -1,13 +1,21 @@
-# Vale config — template for installation into target projects
-# install.sh copies this file to the target project as .vale.ini
-# ראו: https://vale.sh/docs/topics/config
+# Vale config for projects using hebrew-lint.
+# install.sh copies this file to the target project as .vale.ini.
+# See: https://vale.sh/docs/topics/config
 
 StylesPath = .vale/styles
 MinAlertLevel = suggestion
 
-# פורמטים נתמכים
 [*.{md,markdown}]
 BasedOnStyles = FocusAI
+# HtmlDirLang / UnwrappedEnglishBlock / EnglishButton are HTML-only concerns
+FocusAI.HtmlDirLang = NO
+FocusAI.UnwrappedEnglishBlock = NO
+FocusAI.EnglishButton = NO
+# Ignore ✅/❌ example markers used in style-guide documentation
+BlockIgnores = (?m)^\s*[-*][ \t]+[✅❌].*$, \
+               (?m)^> *✅.*$, \
+               (?m)^> *❌.*$
+TokenIgnores = (?s) *(```.*?```), (?s)`[^`]+`
 
 [*.{html,htm}]
 BasedOnStyles = FocusAI
@@ -15,10 +23,6 @@ BasedOnStyles = FocusAI
 [*.{txt,rst,adoc}]
 BasedOnStyles = FocusAI
 
-# קוד: בודקים רק comments
-[*.{py,js,ts,tsx,jsx,sh,go,rb}]
-BasedOnStyles = FocusAI
-CommentDelimiters = //,/*,*/,#
-
-# יוצאים מן הכלל ל-URLs ב-code blocks
-TokenIgnores = (?s) *(```.*?```), (?s)`[^`]+`
+# Source code file types are intentionally left out of v0.1.
+# Vale's CommentDelimiters requires exactly 2 delimiters which doesn't fit
+# single-line comments cleanly. Add per-file-type rules later if needed.
