@@ -1,25 +1,59 @@
 # T6: תעתיק לקוי של מילים אנגליות
-# See: design/unified-hebrew-principles.md § T6
+# See: focus-playbook/design/unified-hebrew-principles.md section T6
 #
 # Catches the "טרמינים" class of bad transliterations: English words
 # lazily Hebraized when a clean Hebrew equivalent exists. These are NOT
-# accepted loanwords like "בלוג" or "סלט".
+# accepted loanwords like "בלוג", "סלט", "דשבורד", or "ריטיינר".
 #
-# Criterion for inclusion: the word has a clean Hebrew alternative AND
-# the transliterated form sounds wrong to a native speaker. Hand-curated.
+# Criterion for inclusion (ALL must be true):
+#   1. The word has a clean, widely-used Hebrew alternative
+#   2. The transliterated form sounds wrong to a native speaker
+#   3. The original English word is also a valid option
+#   4. Tested via dogfood on real Focus AI content
 #
-# Go regex has no lookbehind; rely on nonword: false (word boundaries).
+# Intentionally NOT included (accepted loanwords in Israeli tech):
+#   דשבורד, ריטיינר, פיצ'ר, אינטגרציה, אוטומציה, אופטימיזציה, פונקציונליות,
+#   רלוונטי, סנכרון, מוניטורינג, דפלוימנט, סקריפט, פיקסל, וויג'ט, פרוטוקול,
+#   מיניסייט, מוקאפ, דומיין
+#
+# Implementation note:
+#   Uses extends: existence + nonword: true so that patterns match regardless
+#   of Hebrew prefix letters (ה, ב, ל, מ, כ, ו, ש). Go's regex \b doesn't
+#   fire between two Hebrew letters, which breaks substitution-based rules.
+#   False positive risk is minimal because these transliterations don't
+#   occur as substrings of real Hebrew words.
+#
+# Hand-curated. Add via PR with dogfood evidence.
 
-extends: substitution
-message: "כתבו '%s' במקום '%s' (תעתיק לקוי)"
+extends: existence
+message: "'%s' נראה כתעתיק לקוי. יש חלופה עברית טבעית"
 level: error
 ignorecase: false
-nonword: false
-action:
-  name: replace
-swap:
-  'טרמינים': 'מונחים'
-  'טרמין': 'מונח'
-  'טרמינולוגיה': 'מונחים'
-  'טרמינולוגית': 'אחידות מונחים'
-  'טרמינולוגי': 'של מונחים'
+nonword: true
+tokens:
+  # From initial scaffold — use מונח/מונחים
+  - 'טרמינולוגי[הותםי]*'
+  - 'טרמינים'
+  - 'טרמין(?:[^ו]|$)'
+
+  # v0.1.2: spotted via ONO FCA-2026-087 dogfood (2026-04-14)
+  # קופירייטינג → כתיבה שיווקית
+  - 'קופירייטינג'
+  # תימינג → ערכת עיצוב
+  - 'תימינג'
+
+  # v0.1.2: common bad transliterations in Focus AI internal docs
+  # אימפלמנטציה → יישום
+  - 'אימפלמנטצי[הות]+'
+  # קונסיסטנטיות → עקביות
+  - 'קונסיסטנטי[ותם]*'
+  # אלוקציה → הקצאה
+  - 'אלוקצי[הות]+'
+  # ולידציה → אימות
+  - 'ולידצי[הות]+'
+  # סקלאביליות → יכולת הרחבה
+  - 'סקלאביליות'
+  # אסקלציה → הסלמה
+  - 'אסקלצי[הות]+'
+  # פרזנטציה → מצגת
+  - 'פרזנטצי[הות]+'
