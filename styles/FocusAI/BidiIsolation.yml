@@ -1,0 +1,25 @@
+# P6: אנגלית, פיסוק משפט, רווח, ואנגלית נוספת בלי bidi isolation
+# See: design/unified-hebrew-principles.md § P6
+# Source: Unicode UAX #9 Bidirectional Algorithm, HTML5 <bdi> element spec
+#
+# תופס את הדפוס "מילה באנגלית + פיסוק של סוף משפט + רווח + אות באנגלית",
+# שבהקשר RTL של עברית גורם ל-Unicode Bidirectional Algorithm למזג שתי ריצות
+# אנגלית נפרדות לריצה אחת. התוצאה הוויזואלית: הגבול בין המשפטים מופיע
+# במקום הלא נכון, והקורא רואה "allow list. Credentials" כמשפט אחד באנגלית
+# במקום שני משפטים שמופרדים על ידי נקודה בהקשר העברי.
+#
+# הפתרון: לעטוף כל ריצת אנגלית ב-<bdi> או ב-<span dir="ltr">, כך שה-UBA
+# יתייחס לכל ריצה כאי מבודד ויציב את הפיסוק במיקום הנכון.
+#
+# למה הרגקס עובד בלי negative lookbehind: כשהתוכן כבר עטוף ב-<bdi>,
+# המקור נראה "list</bdi>. <bdi>Credentials", ורצף האותיות נשבר על ידי
+# התג </bdi> לפני הנקודה, כך שהדפוס לא מתאים יותר.
+
+extends: existence
+message: "אנגלית, פיסוק סוף משפט, ואנגלית נוספת ברצף. עטפו כל ריצה ב-<bdi> למניעת ערבוב bidi ויזואלי"
+level: error
+ignorecase: false
+nonword: true
+scope: raw
+tokens:
+  - '[A-Za-z][A-Za-z0-9]*[.!?:] [A-Za-z]'
