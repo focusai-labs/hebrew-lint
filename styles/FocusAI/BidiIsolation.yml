@@ -21,5 +21,8 @@ level: error
 ignorecase: false
 nonword: true
 scope: raw
+# רק נקודה, סימן קריאה וסימן שאלה. הקולון לא נכלל כי הוא מופיע ב-CSS
+# property declarations וב-URL schemes (https:) ויוצר false positives
+# מסיביים בקבצי HTML.
 tokens:
-  - '[A-Za-z][A-Za-z0-9]*[.!?:] [A-Za-z]'
+  - '[A-Za-z][A-Za-z0-9]*[.!?] [A-Za-z]'
